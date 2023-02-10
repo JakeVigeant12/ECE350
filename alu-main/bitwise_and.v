@@ -1,4 +1,6 @@
-module bitwise_and(data, output_data);
+module bitwise_and(data1, data2, output_data);
+input [31:0] data1, data2;
+output[31:0] output_data;
 and and0(output_data[0], data1[0], data2[0]);
 and and1(output_data[1], data1[1], data2[1]);
 and and2(output_data[2], data1[2], data2[2]);

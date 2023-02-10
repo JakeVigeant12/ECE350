@@ -1,6 +1,6 @@
-module bitwise_or(data1, data2, output_Data);
+module bitwise_or(data1, data2, output_data);
 input [31:0] data1, data2;
-output [31:0] output_Data;
+output [31:0] output_data;
 
 or or0(output_data[0], data1[0], data2[0]);
 or or1(output_data[1], data1[1], data2[1]);

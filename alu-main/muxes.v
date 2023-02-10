@@ -9,9 +9,9 @@ module mux_4(in0, in1, in2, in3, out, select);
     input select[1:0];
     input [31:0] in0, in1, in2, in3;
     output [31:0] out;
-    wire [31,0] pick1, pick2;
-    mux_2 layer1_1(.in0(in0), .in1(in1), .out(pick1), .select(select[0]));
-    mux_2 layer1_2(.in0(in3), .in1(in4), .out(pick2), .select(select[0]));
+    wire [31:0] w1, w2;
+    mux_2 layer1_1(.in0(in0), .in1(in1), .out(w1), .select(select[0]));
+    mux_2 layer1_2(.in0(in3), .in1(in4), .out(w2), .select(select[0]));
     mux_2 layer2(.in0(pick1), .in1(pick2), .out(out), .select(select[1]));
 
 endmodule
