@@ -13,9 +13,9 @@ module alu_toy_tb;
     initial // initial block executes only once
         begin
             // values for a and b
-            data_operandA = 1000000;
-            data_operandB = 1;
-            ctrl_ALUopcode = 5'b00101;
+            data_operandA = 10;
+            data_operandB = 7;
+            ctrl_ALUopcode = 5'b00001;
             ctrl_shiftamt = 12;
             #80; // wait for period 
 
