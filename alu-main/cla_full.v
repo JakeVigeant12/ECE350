@@ -6,9 +6,12 @@ module cla_full_adder(x, y, c_in, p, g, s);
     wire [3:0] P, G;
     wire [4:0] c;
     wire c_out;
+    //first block cin line is input to cell
     assign c[0] = c_in;
+    //last bit of carry line is ouput cout of block
     assign c_out = c[4];
 
+    
     cla_block b0(x[7:0], y[7:0], c[0], p[7:0], g[7:0], P[0], G[0], s[7:0]);
     cla_block b1(x[15:8], y[15:8], c[1], p[15:8], g[15:8], P[1], G[1], s[15:8]);
     cla_block b2(x[23:16], y[23:16], c[2], p[23:16], g[23:16], P[2], G[2], s[23:16]);

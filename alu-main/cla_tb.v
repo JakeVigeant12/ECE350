@@ -8,7 +8,6 @@ module cla_tb;
      wire p;
      wire g;
      //Instantiate the target module with inputs as regs, outputs as wire
-    cla_full dut(a,b ,cin, p, g, sum)
 
 
      //Test items themselves

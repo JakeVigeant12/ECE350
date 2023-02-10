@@ -4,11 +4,15 @@ module cla_block(x, y, c_in, p, g, P, G, s);
     output P, G;
     output [7:0] s;
 
+    //Line for carry ins to each adder 
     wire [8:0] c;
     wire c_out;
+    //Carry in to first cell is input to block
     assign c[0] = c_in;
+    //carry out to next block 
     assign c_out = c[8];
 
+    //Construct sum bits with adder cells
     one_bit_adder first(x[0], y[0], c[0], s[0]);
     one_bit_adder second(x[1], y[1], c[1], s[1]);
     one_bit_adder third(x[2], y[2], c[2], s[2]);
@@ -18,7 +22,7 @@ module cla_block(x, y, c_in, p, g, P, G, s);
     one_bit_adder seventh(x[6], y[6], c[6], s[6]);
     one_bit_adder eight(x[7], y[7], c[7], s[7]);
 
-    // calculate carry in's
+    // calculate carry in's, ci+1 = pi&&ci + gi
     wire w1;
     and c1_and1(w1, p[0], c[0]);
     or c1_or(c[1], g[0], w1);
@@ -79,8 +83,8 @@ module cla_block(x, y, c_in, p, g, P, G, s);
     and c8_and8(w8[7], p[7], p[6], p[5], p[4], p[3], p[2], p[1], p[0], c[0]);
     or c8_or(c[8], g[7], w8[0], w8[1], w8[2], w8[3], w8[4], w8[5], w8[6], w8[7]);
 
-    // compute outputs
-    and Po(P, p[7], p[6], p[5], p[4], p[3], p[2], p[1], p[0]);
-    or Go(G, g[7], w8[0], w8[1], w8[2], w8[3], w8[4], w8[5], w8[6]);
+    // compute p and g out for next block
+    and Pout(P, p[7], p[6], p[5], p[4], p[3], p[2], p[1], p[0]);
+    or Gout(G, g[7], w8[0], w8[1], w8[2], w8[3], w8[4], w8[5], w8[6]);
 
 endmodule

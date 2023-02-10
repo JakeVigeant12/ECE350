@@ -1,7 +1,7 @@
-module one_bit_adder(x, y, c_in, s);
-    input x, y, c_in;
+module one_bit_adder(a, b, cin, s);
+    input a, b, cin;
     output s;
-    
-    xor sum(s, x, y, c_in);
+    //compute sum
+    xor sumGen(s, a, b, cin);
 
 endmodule
