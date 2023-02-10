@@ -5,6 +5,7 @@ bitwise_and.v
 bitwise_or.v
 cla_block.v
 cla_full.v
+cla_full_tb.v
 cla_tb.v
 eight_bit_left_shift.v
 eight_bit_right_shift.v

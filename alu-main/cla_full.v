@@ -1,15 +1,19 @@
-module cla_full_adder(x, y, c_in, p, g, s);
-    input [31:0] x, y, p, g;
+module cla_full_adder(x, y, c_in, s);
+    input [31:0] x, y;
     input c_in;
     output [31:0] s;
     
     wire [3:0] P, G;
+    wire[31:0] p,g;
     wire [4:0] c;
     wire c_out;
     //first block cin line is input to cell
     assign c[0] = c_in;
     //last bit of carry line is ouput cout of block
     assign c_out = c[4];
+
+    bitwise_or propGet(x, y, p);
+    bitwise_and genget(x, y, g);
 
     
     cla_block b0(x[7:0], y[7:0], c[0], p[7:0], g[7:0], P[0], G[0], s[7:0]);
