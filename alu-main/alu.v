@@ -34,5 +34,5 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
 
     // use 8 bit mux to select output based on opcode
     //mux_8(in0,in1,in2,in3,in4,in5,in6,in7, out, select);
-    mux_8 resultSelection(addRes, addRes, andRes, orRes, sllRes, sraRes);
+    //mux_8 resultSelection(addRes, addRes, andRes, orRes, sllRes, sraRes);
 endmodule
