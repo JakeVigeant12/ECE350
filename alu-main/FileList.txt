@@ -1,5 +1,6 @@
 alu.v
 alu_tb.v
+alu_toy_tb.v
 bit_inverter.v
 bitwise_and.v
 bitwise_or.v

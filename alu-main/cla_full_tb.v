@@ -6,17 +6,17 @@ module cla_full_tb;
     reg cin;
     wire [31:0] s;
 
-    cla_full_adder testUnit(a,b,cin,s);
+    cla_full_adder testUnit(a,b,cin,s,ovf);
 
     initial // initial block executes only once
         begin
             // values for a and b
-            a = 50;
-            b = 27;
+            a = 6;
+            b = -2;
             cin = 0;
             #80; // wait for period 
 
-            $display("a:%d, b:%d, cin:%d => result:%d",a,b,cin,s);
+            $display("a:%d, b:%d, cin:%d => result:%d, ovf:%b",a,b,cin,s,ovf);
             $finish;
 
         end

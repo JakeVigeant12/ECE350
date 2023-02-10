@@ -1,7 +1,8 @@
-module cla_full_adder(x, y, c_in, s);
+module cla_full_adder(x, y, c_in, s, ovf);
     input [31:0] x, y;
     input c_in;
     output [31:0] s;
+    output ovf;
     
     wire [3:0] P, G;
     wire[31:0] p,g;
@@ -43,5 +44,14 @@ module cla_full_adder(x, y, c_in, s);
     and b3_and3(w_b3[2], P[3], P[2], P[1], G[0]);
     and b3_and4(w_b3[3], P[3], P[2], P[1], P[0], c[0]);
     or b3_or(c[4], G[3], w_b3[0], w_b3[1], w_b3[2], w_b3[3]);
+
+    wire not_msb_A, not_msb_B, not_msb_sum, pos_overflow, neg_overflow;
+    not invert_msb_A(not_msb_A, x[31]);
+    not invert_msb_B(not_msb_B, y[31]);
+    not invert_msb_sum(not_msb_sum, s[31]);
+    and check_pos_overfow(pos_overflow, not_msb_A, not_msb_B, s[31]);
+    and check_neg_overflow(neg_overflow, x[31], y[31], not_msb_sum);
+    or check_overflow(ovf, pos_overflow, neg_overflow);
+
 
 endmodule

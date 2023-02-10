@@ -6,7 +6,7 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
     output [31:0] data_result;
     output isNotEqual, isLessThan, overflow;
 
-    wire [31:0] addRes, andRes, orRes, sllRes, sraRes;
+    wire [31:0] addRes, andRes, orRes, sllRes, sraRes, subRes;
     wire doSub;
 
     //addition/subtraction result
@@ -19,20 +19,23 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
 
 
     //and result
+    bitwise_and aluAnd(data_operandA, data_operandB, andRes);
 
 
     //or result
-
+    bitwise_or aluOR(data_operandA, data_operandB, orRes);
 
     //sll result
-
-
+    //module left_barrel_shifter (data, amt, out);
+    left_barrel_shifter aluLeft(data_operandA,ctrl_shiftamt,sllRes);
     //sra result
-
-
-
+    right_barrel_shifter aluRight(data_operandA,ctrl_shiftamt,sraRes);
 
     // use 8 bit mux to select output based on opcode
     //mux_8(in0,in1,in2,in3,in4,in5,in6,in7, out, select);
-    //mux_8 resultSelection(addRes, addRes, andRes, orRes, sllRes, sraRes);
+    mux_8 resultSelection(addRes, subRes, andRes, orRes, sllRes, sraRes, 32'b0, 32'b0, data_result, ctrl_ALUopcode[2:0]);
+
+    assign isNotEqual  = 1'b0;
+    assign isLessThan  = 1'b0;
+    assign overflow = 1'b0;
 endmodule
