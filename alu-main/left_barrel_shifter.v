@@ -23,5 +23,4 @@ module left_barrel_shifter (data, amt, out);
     sixteen_bit_left_shift shift5(w4, s5);
     mux_2 level5(out,amt[4],w4, s5);
 
-
 endmodule

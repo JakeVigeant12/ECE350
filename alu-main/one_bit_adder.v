@@ -3,5 +3,4 @@ module one_bit_adder(a, b, cin, s);
     output s;
     //compute sum
     xor sumGen(s, a, b, cin);
-
 endmodule
