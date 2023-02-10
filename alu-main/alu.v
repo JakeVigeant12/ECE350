@@ -12,7 +12,8 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
     //addition/subtraction result
     //cla_full_adder(x, y, c_in, p, g, s);
     //use cin to add on 1 if subtraction
-    adder cla_full_adder(data_operandA, data_operandB, doSub, p, g, addResult)
+    
+    //adder cla_full_adder(data_operandA, data_operandB, doSub, p, g, addResult);
 
     //subtraction result
 
@@ -33,7 +34,6 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
 
     // use 8 bit mux to select output based on opcode
     // mux_8(in0,in1,in2,in3,in4,in5,in6,in7, out, select);
-    mux_8 selectMux();
     
 
 endmodule

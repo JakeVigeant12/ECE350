@@ -1,4 +1,4 @@
-module (data1, data2, output_Data);
+module bitwise_or(data1, data2, output_Data);
 input [31:0] data1, data2;
 output [31:0] output_Data;
 
